@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'movies#index'
+
   # Routes for the Actor resource:
   # CREATE
   get '/actors/new',      :controller => 'actors', :action => 'new',    :as => 'new_actor'
