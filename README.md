@@ -41,6 +41,13 @@ In this project, we'll practice how to build relationships between models.
           movie_id: integer
           actor_id: integer
 
+ 1. Add validations to your models:
+ 
+        Actor: presence of name, uniqueness of name
+        Director: presence of name, uniqueness of name
+        Movie: presence of title, presence of director_id
+        Role: presence of movie_id, presence of actor_id
+
  1. Start your `rails server`. Navigate to http://localhost:3000/movies, http://localhost:3000/directors, etc. Make sure the resources look right.
  1. Generate an application layout that includes Bootstrap and a navbar:
 
