@@ -1,7 +1,5 @@
 class Director < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true
 
-  def movies
-    return Movie.where(:director_id => self.id)
-  end
+  # has many Movies (method name: "filmography", foreign key: director_id)
 end

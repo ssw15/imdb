@@ -3,11 +3,8 @@ class Role < ActiveRecord::Base
   validates :movie_id, :presence => true
   validates :actor_id, :presence => true
 
-  def movie
-    return Movie.find_by(:id => self.movie_id)
-  end
+  # belongs to Actor (method name: "actor", foreign key: actor_id)
 
-  def actor
-    return Actor.find_by(:id => self.actor_id)
-  end
+  # belongs to Movie (method name: "movie", foreign key: movie_id)
+
 end

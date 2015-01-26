@@ -2,12 +2,11 @@ class Movie < ActiveRecord::Base
   validates :title, :presence => true
   validates :director_id, :presence => true
 
-  def director
-    return Director.find_by(:id => self.director_id)
-  end
+  # belongs to Director (method name: "director", foreign key: director_id)
 
-  def roles
-    return Role.where(:movie_id => self.id)
-  end
+  # has many Roles (method name: "roles", foreign key: movie_id)
+
+  # Challenge:
+  # has many Actors (method name: "actors")
 
 end
