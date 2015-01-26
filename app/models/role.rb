@@ -4,10 +4,10 @@ class Role < ActiveRecord::Base
   validates :actor_id, :presence => true
 
   def movie
-    return Movie.find_by({ :id => self.movie_id })
+    return Movie.find_by(:id => self.movie_id)
   end
 
   def actor
-    return Actor.find_by({ :id => self.actor_id })
+    return Actor.find_by(:id => self.actor_id)
   end
 end

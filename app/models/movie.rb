@@ -3,6 +3,11 @@ class Movie < ActiveRecord::Base
   validates :director_id, :presence => true
 
   def director
-    return Director.find_by({ :id => self.director_id })
+    return Director.find_by(:id => self.director_id)
   end
+
+  def roles
+    return Role.where(:movie_id => self.id)
+  end
+
 end
