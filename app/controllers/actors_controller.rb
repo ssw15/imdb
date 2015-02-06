@@ -13,11 +13,7 @@ class ActorsController < ApplicationController
   end
 
   def create
-    @actor = Actor.new
-    @actor.dob = params[:dob]
-    @actor.name = params[:name]
-    @actor.bio = params[:bio]
-    @actor.image_url = params[:image_url]
+    @actor = Actor.new(actor_params)
 
     if @actor.save
       redirect_to actors_url, :notice => "Actor created successfully."
@@ -30,11 +26,7 @@ class ActorsController < ApplicationController
   end
 
   def update
-
-    @actor.dob = params[:dob]
-    @actor.name = params[:name]
-    @actor.bio = params[:bio]
-    @actor.image_url = params[:image_url]
+    @actor.update_attributes(actor_params)
 
     if @actor.save
       redirect_to actor_url(@actor.id), :notice => "Actor updated successfully."
@@ -53,8 +45,12 @@ class ActorsController < ApplicationController
 
   private
 
-  def set_director
+  def set_actor
     @actor = Actor.find(params[:id])
+  end
+
+  def actor_params
+    params.require(:actor).permit(:dob, :name, :bio, :image_url)
   end
 
 end
