@@ -13,12 +13,7 @@ class DirectorsController < ApplicationController
   end
 
   def create
-    @director = Director.new
-    @director.dob = params[:dob]
-    @director.name = params[:name]
-    @director.bio = params[:bio]
-    @director.image_url = params[:image_url]
-
+    @director = Director.new(director_params)
     if @director.save
       redirect_to directors_url, :notice => "Director created successfully."
     else
@@ -30,11 +25,7 @@ class DirectorsController < ApplicationController
   end
 
   def update
-
-    @director.dob = params[:dob]
-    @director.name = params[:name]
-    @director.bio = params[:bio]
-    @director.image_url = params[:image_url]
+    @director.update_attributes(director_params)
 
     if @director.save
       redirect_to director_url(@director.id), :notice => "Director updated successfully."
@@ -54,6 +45,10 @@ class DirectorsController < ApplicationController
 
   def set_director
     @director = Director.find(params[:id])
+  end
+
+  def director_params
+    params.require(:director).permit(:dob, :name, :bio, :image_url)
   end
 
 
