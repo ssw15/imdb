@@ -3,9 +3,19 @@ class DirectorsController < ApplicationController
 
   def index
     @directors = Director.all
+
+    respond_to do |format|
+      format.html { render 'show'}
+      format.json { render json: @directors }
+    end
   end
 
   def show
+
+    respond_to do |format|
+      format.html { render 'show'}
+      format.json { render json: @director }
+    end
   end
 
   def new

@@ -53,4 +53,5 @@ class RolesController < ApplicationController
   def set_role
     @role = Role.find(params[:id])
   end
+
 end
