@@ -1,10 +1,11 @@
 class MoviesController < ApplicationController
+  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+
   def index
     @movies = Movie.all
   end
 
   def show
-    @movie = Movie.find(params[:id])
   end
 
   def new
@@ -28,11 +29,9 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
   end
 
   def update
-    @movie = Movie.find(params[:id])
 
     @movie.title = params[:title]
     @movie.year = params[:year]
@@ -49,10 +48,15 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
 
     @movie.destroy
 
     redirect_to movies_url, :notice => "Movie deleted."
+  end
+
+  private
+
+  def set_movie
+    @movie = Movie.find(params[:id])
   end
 end

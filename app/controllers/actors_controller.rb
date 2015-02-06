@@ -1,10 +1,11 @@
 class ActorsController < ApplicationController
+  before_action :set_actor, only: [:show, :edit, :update, :destroy]
+
   def index
     @actors = Actor.all
   end
 
   def show
-    @actor = Actor.find(params[:id])
   end
 
   def new
@@ -26,11 +27,9 @@ class ActorsController < ApplicationController
   end
 
   def edit
-    @actor = Actor.find(params[:id])
   end
 
   def update
-    @actor = Actor.find(params[:id])
 
     @actor.dob = params[:dob]
     @actor.name = params[:name]
@@ -45,10 +44,17 @@ class ActorsController < ApplicationController
   end
 
   def destroy
-    @actor = Actor.find(params[:id])
+
 
     @actor.destroy
 
     redirect_to actors_url, :notice => "Actor deleted."
   end
+
+  private
+
+  def set_director
+    @actor = Actor.find(params[:id])
+  end
+
 end

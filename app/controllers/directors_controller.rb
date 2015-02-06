@@ -1,10 +1,11 @@
 class DirectorsController < ApplicationController
+  before_action :set_director, only: [:show, :edit, :update, :destroy]
+
   def index
     @directors = Director.all
   end
 
   def show
-    @director = Director.find(params[:id])
   end
 
   def new
@@ -26,11 +27,9 @@ class DirectorsController < ApplicationController
   end
 
   def edit
-    @director = Director.find(params[:id])
   end
 
   def update
-    @director = Director.find(params[:id])
 
     @director.dob = params[:dob]
     @director.name = params[:name]
@@ -45,10 +44,17 @@ class DirectorsController < ApplicationController
   end
 
   def destroy
-    @director = Director.find(params[:id])
 
     @director.destroy
 
     redirect_to directors_url, :notice => "Director deleted."
   end
+
+  private
+
+  def set_director
+    @director = Director.find(params[:id])
+  end
+
+
 end

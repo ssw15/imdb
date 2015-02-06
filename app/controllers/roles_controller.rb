@@ -1,10 +1,11 @@
 class RolesController < ApplicationController
+  before_action :set_role, only: [:show, :edit, :update, :destroy]
+
   def index
     @roles = Role.all
   end
 
   def show
-    @role = Role.find(params[:id])
   end
 
   def new
@@ -25,11 +26,9 @@ class RolesController < ApplicationController
   end
 
   def edit
-    @role = Role.find(params[:id])
   end
 
   def update
-    @role = Role.find(params[:id])
 
     @role.character_name = params[:character_name]
     @role.movie_id = params[:movie_id]
@@ -43,10 +42,15 @@ class RolesController < ApplicationController
   end
 
   def destroy
-    @role = Role.find(params[:id])
 
     @role.destroy
 
     redirect_to roles_url, :notice => "Role deleted."
+  end
+
+  private
+
+  def set_role
+    @role = Role.find(params[:id])
   end
 end
