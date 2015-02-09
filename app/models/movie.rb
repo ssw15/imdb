@@ -7,13 +7,9 @@ class Movie < ActiveRecord::Base
 
   has_many :cast, :through => :roles, :source => :actor
 
+  has_many :likes
 
-  # after_destroy :clean_up_roles
-
-  # def clean_up_roles
-  #   self.roles.destroy_all
-  # end
-
+  has_many :users, :through => :likes
 end
 
 
