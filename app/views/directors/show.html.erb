@@ -1,4 +1,4 @@
-<%= render('zebra', :giraffe => @director) %>
+<%= render('zebra', :director => @director) %>
 
 <!-- Responsive panel example-->
 
@@ -23,16 +23,6 @@
 
               <dt>Image url</dt>
               <dd><%= @director.image_url %></dd>
-
-              <dt>Filmography</dt>
-              <dd>
-                <ul>
-                  <% @director.filmography.each do |movie| %>
-                    <li><%= movie.title %> (<%= movie.year %>)</li>
-                  <% end %>
-                </ul>
-              </dd>
-
             </dl>
             <div class="btn-group btn-group-justified">
               <%= link_to directors_url, :class => "btn btn-primary" do %>
@@ -52,4 +42,16 @@
   </div>
 </div>
 
+<% @director.filmography.each do |movie| %>
+  <%= render 'movies/movie', :movie => movie %>
+<% end %>
+
 <!-- End responsive panel example -->
+
+
+
+
+
+
+
+

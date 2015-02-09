@@ -1,0 +1,42 @@
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Movie #<%= movie.id %></h3>
+    </div>
+    <div class="panel-body">
+      <dl>
+        <dt>Title</dt>
+        <dd><%= movie.title %></dd>
+
+        <dt>Year</dt>
+        <dd><%= movie.year %></dd>
+
+        <dt>Duration</dt>
+        <dd><%= movie.duration %></dd>
+
+        <dt>Description</dt>
+        <dd><%= movie.description %></dd>
+
+        <dt>Image url</dt>
+        <dd><%= movie.image_url %></dd>
+
+        <dt>Director</dt>
+        <dd>
+          <%= movie.director.try(:name) %>
+        </dd>
+
+      </dl>
+      <div class="btn-group btn-group-justified">
+        <%= link_to movie_url(movie), :class => "btn btn-primary" do %>
+          <i class="fa fa-search-plus"></i>
+        <% end %>
+        <%= link_to edit_movie_url(movie), :class => "btn btn-warning" do %>
+          <i class="fa fa-edit"></i>
+        <% end %>
+        <%= link_to movie_url(movie), :method => "delete", :data => { :confirm => "Do you really want to delete this movie?" }, :class => "btn btn-danger" do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
