@@ -26,7 +26,7 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie.update_attributes(movie_params)
+    @movie.update(movie_params)
 
     if @movie.save
       redirect_to movie_url(@movie.id), :notice => "Movie updated successfully."

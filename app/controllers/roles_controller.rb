@@ -13,11 +13,7 @@ class RolesController < ApplicationController
   end
 
   def create
-    @role = Role.new
-    @role.character_name = params[:character_name]
-    @role.movie_id = params[:movie_id]
-    @role.actor_id = params[:actor_id]
-
+    @role = Role.new(role_params)
     if @role.save
       redirect_to roles_url, :notice => "Role created successfully."
     else
@@ -29,10 +25,7 @@ class RolesController < ApplicationController
   end
 
   def update
-
-    @role.character_name = params[:character_name]
-    @role.movie_id = params[:movie_id]
-    @role.actor_id = params[:actor_id]
+    @role.update(role_params)
 
     if @role.save
       redirect_to role_url(@role.id), :notice => "Role updated successfully."
@@ -52,6 +45,10 @@ class RolesController < ApplicationController
 
   def set_role
     @role = Role.find(params[:id])
+  end
+
+  def role_params
+    params.require(:role).permit(:character_name, :movie_id, :actor_id)
   end
 
 end

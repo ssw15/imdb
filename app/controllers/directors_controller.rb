@@ -35,7 +35,7 @@ class DirectorsController < ApplicationController
   end
 
   def update
-    @director.update_attributes(director_params)
+    @director.update(director_params)
 
     if @director.save
       redirect_to director_url(@director.id), :notice => "Director updated successfully."

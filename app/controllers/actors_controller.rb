@@ -26,7 +26,7 @@ class ActorsController < ApplicationController
   end
 
   def update
-    @actor.update_attributes(actor_params)
+    @actor.update(actor_params)
 
     if @actor.save
       redirect_to actor_url(@actor.id), :notice => "Actor updated successfully."
