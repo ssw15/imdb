@@ -42,7 +42,7 @@ In this project, we'll practice how to build relationships between models.
           actor_id: integer
 
  1. Add validations to your models:
- 
+
         Actor: presence of name, uniqueness of name
         Director: presence of name, uniqueness of name
         Movie: presence of title, presence of director_id
@@ -56,3 +56,19 @@ In this project, we'll practice how to build relationships between models.
  1. Seed the database with some dummy data so that we can get down to work:
 
         rake db:seed
+
+
+## Likes
+
+Let's complete our Movies app by adding the following features:
+
+ - Using Devise, add User accounts to the app. Don't use scaffold or starter:resource generators.
+ - For now, we can just go with Devise's default columns for the User table.
+
+ - Add the ability for users to "like" and "unlike" movies.
+  - Ensure that a user is signed in before allowing them to add or modify likes.
+  - Display the number of likes for each movie on Movies#index and Movies#show.
+  - Users should see a list of movies they have liked at the URL "/my_favorites".
+  - Users should only be able to like a single movie once.
+
+  - Once you are finished, remove or secure extra scaffolding that you don't want users to be able to access.
