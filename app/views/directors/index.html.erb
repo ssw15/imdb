@@ -17,36 +17,12 @@
 
 <hr>
 
-<div class="row isotope-container">
-<% @directors.each do |director| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Director #<%= director.id %></h3>
-      </div>
-      <div class="panel-body">
-        <%= link_to image_tag(director.image_url), director_url(director.id), :class => "thumbnail" %>
-        <dl>
-          <dt>Name</dt>
-          <dd><%= director.name %></dd>
+<%= render 'form', :director => Director.new %>
 
-          <dt>Dob</dt>
-          <dd><%= director.dob %></dd>
-        </dl>
-        <div class="btn-group btn-group-justified">
-          <%= link_to director_url(director), :class => "btn btn-primary" do %>
-            <i class="fa fa-search-plus"></i>
-          <% end %>
-          <%= link_to edit_director_url(director), :class => "btn btn-warning" do %>
-            <i class="fa fa-edit"></i>
-          <% end %>
-          <%= link_to director_url(director), :method => "delete", :data => { :confirm => "Do you really want to delete this director?" }, :class => "btn btn-danger" do %>
-            <i class="fa fa-trash-o"></i>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+
+<div class="row isotope-container">
+<% @directors.each do |elephant| %>
+  <%= render('zebra', { :giraffe => elephant })  %>
 <% end %>
 </div>
 

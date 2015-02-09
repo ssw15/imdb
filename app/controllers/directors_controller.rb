@@ -5,7 +5,7 @@ class DirectorsController < ApplicationController
     @directors = Director.all
 
     respond_to do |format|
-      format.html { render 'show'}
+      format.html { render 'index'}
       format.json { render json: @directors }
     end
   end
@@ -24,6 +24,7 @@ class DirectorsController < ApplicationController
 
   def create
     @director = Director.new(director_params)
+
     if @director.save
       redirect_to directors_url, :notice => "Director created successfully."
     else
@@ -58,8 +59,7 @@ class DirectorsController < ApplicationController
   end
 
   def director_params
-    params.require(:director).permit(:dob, :bio, :image_url)
+    params.require(:director).permit(:dob, :name, :bio, :image_url)
   end
-
 
 end
