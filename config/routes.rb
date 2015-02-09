@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # Routes for the Director resource:
   # CREATE
   get '/directors/new',      :controller => 'directors', :action => 'new',    :as => 'new_director'
-  post '/directors',         :controller => 'directors', :action => 'create', :as => 'directors'
+  post '/directors',         :controller => 'directors', :action => 'create'
 
   # READ
   get '/directors',          :controller => 'directors', :action => 'index'
