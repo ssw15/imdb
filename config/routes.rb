@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :actors
   resources :roles
   resources :movies
+
+  get '/my_favorites' => 'movies#favorites'
 end
